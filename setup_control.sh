@@ -19,6 +19,11 @@ apt update
 apt install -y ansible
 cp /local/repository/hosts /etc/ansible/
 
+# configure to disable strict hostkey checking
+runuser -u lngo -- cat "Host *" >> /users/lngo/.ssh/config
+runuser -u lngo -- cat "  StrictHostKeyChecking no" >> /users/lngo/.ssh/config
+chmod 400 /users/lngo/.ssh/config
+
 # setup lamp
 git clone https://github.com/do-community/ansible-playbooks.git
 cd ansible-playbooks/lamp_ubuntu1804/
