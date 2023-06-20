@@ -20,8 +20,9 @@ apt install -y ansible
 cp /local/repository/hosts /etc/ansible/
 
 # configure to disable strict hostkey checking
-runuser -u lngo -- cat "Host *" >> /users/lngo/.ssh/config
-runuser -u lngo -- cat "  StrictHostKeyChecking no" >> /users/lngo/.ssh/config
+echo "Host *" | sudo tee -a /users/lngo/.ssh/config
+echo "  StrictHostKeyChecking no" | sudo tee -a /users/lngo/.ssh/config
+chown lngo: /users/lngo/.ssh/config
 chmod 400 /users/lngo/.ssh/config
 
 # setup lamp
