@@ -20,10 +20,8 @@ apt install -y ansible
 cp /local/repository/hosts /etc/ansible/
 
 # configure to disable strict hostkey checking
-echo "Host *" | sudo tee -a /users/lngo/.ssh/config
-echo "  StrictHostKeyChecking no" | sudo tee -a /users/lngo/.ssh/config
-chown lngo: /users/lngo/.ssh/config
-chmod 400 /users/lngo/.ssh/config
+echo "[defaults]" | sudo tee -a /etc/ansible/ansible.cfg
+echo "host_key_checking = False" | sudo tee -a /etc/ansible/ansible.cfg
 
 # setup lamp
 git clone https://github.com/do-community/ansible-playbooks.git
