@@ -24,10 +24,5 @@ echo "[defaults]" | sudo tee -a /etc/ansible/ansible.cfg
 echo "host_key_checking = False" | sudo tee -a /etc/ansible/ansible.cfg
 
 # setup lamp
-git clone https://github.com/do-community/ansible-playbooks.git
-cd ansible-playbooks/lamp_ubuntu1804/
-cp /local/repository/default.yml vars/
-HOST=$(hostname -f)
-sed -i "s/HOSTNAME/$HOST/g" vars/default.yml
-ansible-playbook playbook.yml -l server1 -u lngo
+runuser -u lngo -- bash /local/repository/setup_ansible.sh
 
