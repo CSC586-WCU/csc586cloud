@@ -8,7 +8,7 @@ request = pc.makeRequestRSpec()
 
 tourDescription = \
 """
-This profile provides the template for a compute node with Docker installed on Ubuntu 18.04
+This profile provides the template for a compute node with Docker installed on Ubuntu 20.04
 """
 
 #
@@ -26,7 +26,7 @@ node.routable_control_ip = "true"
 bs_landing = node.Blockstore("bs_image", "/image")
 bs_landing.size = "500GB"
   
-node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU18-64-STD"
+node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:UBUNTU20-64-STD"
 node.routable_control_ip = "true"
 node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/install_docker.sh"))
   
